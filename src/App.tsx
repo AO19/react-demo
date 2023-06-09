@@ -1,20 +1,32 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { Game, Logs } from './components';
 
-export type LogContextType = {
-  addLog: (value: string) => void;
+export const LogContext = createContext<{
   logs: string[];
-};
-export const LogContext = createContext<LogContextType>({
+  addLog: (value: string) => void;
+}>({
   logs: [],
   addLog: () => {},
 });
 
 export function App() {
   const [logs, setLogs] = useState<string[]>([]);
-  function addLog(value: string) {
-    setLogs((logs = []) => [...logs, value]);
-  }
+  const addLog = (value: string) => {
+    setLogs((logs) => [...logs, value]);
+  };
+
+  useEffect(() => {
+    const alertUser = (e: BeforeUnloadEvent) => {
+      e.preventDefault();
+      e.returnValue = '';
+    };
+
+    window.addEventListener('beforeunload', alertUser);
+
+    return () => {
+      window.removeEventListener('beforeunload', alertUser);
+    };
+  }, []);
 
   return (
     <LogContext.Provider value={{ logs, addLog }}>
