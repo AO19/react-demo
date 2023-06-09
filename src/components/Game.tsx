@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Board } from '.';
+import { LogContext } from '../App';
 
 export function Game() {
   const [history, setHistory] = useState([Array(9).fill(null)]);
@@ -7,15 +8,19 @@ export function Game() {
   const xIsNext = currentMove % 2 === 0;
   const currentSquares = history[currentMove];
 
+  const { addLog } = useContext(LogContext);
+
   function handlePlay(nextSquares: string[]) {
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
     setHistory(nextHistory);
     setCurrentMove(nextHistory.length - 1);
+    addLog(`${xIsNext ? 'X' : 'O'} Played move #${currentMove + 1}`);
   }
 
   function jumpTo(nextMove: number) {
     return function () {
       setCurrentMove(nextMove);
+      addLog(`Jumped to move #${nextMove}`);
     };
   }
 
