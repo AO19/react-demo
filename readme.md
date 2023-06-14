@@ -16,7 +16,7 @@ Follow the steps below to get this project up and running on your local machine:
 
 1. Clone this repository to your local machine using the following command:
    ```shell
-   git clone https://github.com/your-username/your-project.git
+   git clone https://github.com/AO19/react-demo.git
    ```
 2. Navigate to the project's directory:
    ```shell
