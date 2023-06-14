@@ -26,16 +26,16 @@ Follow the steps below to get this project up and running on your local machine:
    ```shell
    npm install
    ```
-4. Start the development server:
+4. Open the project in Visual Studio Code to start modifying the code or run
+   ```shell
+   code .
+   ```
+   in your terminal (in the project directory).   
+5. Start the development server:
    ```shell
    npm run dev
    ```
    This will start the development server and open the application in your default browser. The server automatically reloads the app when you make changes to the source code.
-5. Open the project in Visual Studio Code to start modifying the code or run
-   ```shell
-   code .
-   ```
-   in your terminal (in the project directory).
 
 ## React Developer Tools (Browser extension)
 
